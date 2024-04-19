@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@api/*": ["src/api/*"],
+			"@pages/*": ["src/pages/*"],
+			"@models/*": ["src/api/models/*"],
+			"@repositories/*": ["src/api/repositories/*"],
+			"@services/*": ["src/api/services/*"],
+			"@assets/*": ["src/assets/*"],
+			"@components/*": ["src/common/components/*"],
+			"@common/*": ["src/common/*"],
+			"@layout/*": ["src/common/layout/*"],
+			"@routes/*": ["src/routes/*"],
+			"@theme/*": ["src/theme/*"],
+			"@constants/*": ["src/utils/constants/*"],
+			"@helpers/*": ["src/utils/helpers/*"],
+			"@hooks/*": ["src/utils/hooks/*"],
+			"@interfaces/*": ["src/utils/interfaces/*"],
+			"@styles/*": ["src/utils/styles/*"],
+			"@utils/*": ["src/utils/*"]
+		}
+	}
+}
