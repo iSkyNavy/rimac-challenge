@@ -1,0 +1,41 @@
+@import '../../../utils/styles/theme';
+
+.c_header {
+    padding: clamp(12px, 6vw, 14px) 0;
+}
+
+.c_header__wrapper, .c_header__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c_header__details_icon {
+    margin-right: 8px;
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.c_header__details_buy_text {
+    @include textRegular;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0.20000000298023224px;
+}
+
+.c_header__details_phone_text {
+    @include textBold;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.4000000059604645px;
+}
+
+@media screen and (width >= $breakpoint-sm) {
+    .c_header__details_icon {
+        margin-left: 16px;
+    }
+}

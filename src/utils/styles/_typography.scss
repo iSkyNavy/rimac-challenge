@@ -1,0 +1,13 @@
+@import './fonts';
+
+.i-text-regular {
+    @include textRegular;
+}
+
+.i-text-medium {
+    @include textMedium
+}
+
+.i-text-bold {
+    @include textBold;
+}

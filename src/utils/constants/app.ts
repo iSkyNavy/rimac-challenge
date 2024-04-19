@@ -1,1 +1,1 @@
-export const URL_BASE = process.env.REACT_APP_URL_BASE;
+export const URL_BASE = import.meta.env.REACT_APP_URL_BASE;

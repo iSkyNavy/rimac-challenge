@@ -1,4 +1,4 @@
-import RouteProvider from "@routes/RouteProvider";
+import RouteProvider from "./routes/RouteProvider";
 
 function App() {
 	return <RouteProvider />;

@@ -1,0 +1,23 @@
+@import 'fonts/fonts';
+
+$font-regular: 'br_sonoma__regular';
+$font-medium: 'br_sonoma__medium';
+$font-bold: 'br_sonoma__bold';
+
+@mixin textRegular {
+    color: #03050F;
+    font-family: $font-regular;
+    font-weight: 400;
+}
+
+@mixin textMedium {
+    color: #03050F;
+    font-family: $font-medium;
+    font-weight: 500;
+}
+
+@mixin textBold {
+    color: #03050F;
+    font-family: $font-bold;
+    font-weight: 100;
+}
