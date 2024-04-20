@@ -1,0 +1,91 @@
+$padding: 16px;
+
+.normal_text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #03050F;
+}
+
+.c_input {
+    position: relative;
+    max-width: 568px;
+    border: 1px solid #5E6488;
+    padding: 24px $padding 8px;
+    transition: all ease 0.3s;
+    z-index: 0;
+    background-color: #F8F9FF;
+    width: 100%;
+}
+
+.c_input__border_full {
+    border-radius: 8px;
+}
+
+.c_input__border_left {
+    border-radius: 8px 0 0 8px;
+    border-right: 0;
+}
+
+.c_input__border_right {
+    border-radius: 0 8px 8px 0;
+    border-left: 0;
+}
+
+.c_input__has_value {
+    .c_input__label {
+        top: 8px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        color: #5E6488;
+    }
+}
+
+.c_input__text {
+    background-color: transparent;
+    width: 100%;
+    border: 0;
+
+    @extend .normal_text;
+    &:focus {
+        ~.c_input__label {
+            top: 8px;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 16px;
+            color: #5E6488;
+        }
+    }
+}
+
+.c_input__text[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.c_input__text::-webkit-outer-spin-button,
+.c_input__text::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.c_input__label {
+    position: absolute;
+    left: $padding - 4px;
+    padding: 0 4px;
+    top: $padding;
+    z-index: 2;
+    transition: all ease 0.28s;
+    pointer-events: none;
+
+    @extend .normal_text;
+}
+
+/* .c_input__label::after {
+    content: "";
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 0;
+    z-index: -1;
+} */

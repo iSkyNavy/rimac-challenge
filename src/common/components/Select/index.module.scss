@@ -1,0 +1,39 @@
+.c_select__wrapper {
+    position: relative;
+}
+.c_select {
+    padding: 8px 16px 8px;
+    background-color: #F8F9FF;
+    height: 100%;
+    -webkit-appearance: none;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    &:focus {
+        ~.c_select__icon_wrapper {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.c_select__border_full {
+    border-radius: 8px;
+}
+
+.c_select__border_left {
+    border-radius: 8px 0 0 8px;
+}
+
+.c_select__border_right {
+    border-radius: 0 8px 8px 0;
+}
+
+.c_select__icon_wrapper {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    pointer-events: none;
+
+    transition: 0.2s all;
+}

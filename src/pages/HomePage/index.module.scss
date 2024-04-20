@@ -1,0 +1,31 @@
+@import '../../utils/styles/theme';
+
+.p_home__blur_pink {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 40%;
+}
+
+.p_home__blur_turquoise {
+    position: absolute;
+    right: -30%;
+    top: 0;
+}
+
+.p_home__blur_turquoise_img, .p_home__blur_pink_img {
+    max-height: calc(100% - 60px);
+}
+
+@media screen and (width >= $breakpoint-sm) {
+    .p_home__blur_pink {
+        left: -50px;
+        top: -68px;
+    }
+
+    .p_home__blur_turquoise {
+        right: -160px;
+        top: -160px;
+    }
+}
+
