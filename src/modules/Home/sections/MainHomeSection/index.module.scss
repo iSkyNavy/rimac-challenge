@@ -65,13 +65,17 @@
 }
 
 .s_main_home__form {
-    margin: 24px auto;
+    margin: 24px auto 0;
     max-width: 400px;
 }
 
 .s_main_home__form_row {
     display: flex;
     margin-bottom: 16px;
+}
+
+.s_main_home__form_row_checkbox {
+    @extend .s_main_home__form_row;
 }
 
 .s_main_home__form_select {
@@ -91,7 +95,6 @@
 
 .s_main_home__form_button_submit {
     background-color: #03050F;
-    // width: 336px;
     width: 100%;
     padding: 18px 40px 18px 40px;
     border-radius: 40px;
@@ -109,6 +112,18 @@
     }
 }
 
+.s_main_home__form_checkboxes {
+    margin-top: 24px;
+}
+
+.s_main_home__form_error {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    height: 36px;
+    color: red;
+}
+
 @media screen and (width >= $breakpoint-sm) {
 
     .s_main_home__right {
@@ -122,6 +137,10 @@
 
     .s_main_home__presentation_badge {
         margin-bottom: 16px;
+    }
+
+    .s_main_home__presentation {
+        margin-bottom: 8px;
     }
 
     .s_main_home__separator, .s_main_home__presentation_img {
@@ -153,6 +172,14 @@
 
     .s_main_home__presentation_title {
         font-size: 32px;
+    }
+
+    .s_main_home__form_button_submit {
+        width: 195px;
+    }
+
+    .s_main_home__form_row_checkbox {
+        margin-bottom: 12px;
     }
 }
 

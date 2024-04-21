@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "@common/layout";
-import { URL_BASE } from "@constants/app";
-
 import { publicRoutes } from "./routes";
+import { UserProvider } from "@contexts/UserContext";
 
 const RouteProvider = () => {
 	const publicModule = publicRoutes.map(({ name, path, Component }, index) => (
@@ -10,7 +9,13 @@ const RouteProvider = () => {
 	));
 	return (
 		<Routes>
-			<Route path={URL_BASE} element={<Layout />}>
+			<Route
+				element={
+					<UserProvider>
+						<Layout />
+					</UserProvider>
+				}
+			>
 				{publicModule}
 			</Route>
 		</Routes>

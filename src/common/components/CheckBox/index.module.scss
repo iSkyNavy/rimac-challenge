@@ -1,3 +1,5 @@
+@import '../../../utils/styles/theme';
+
 .c_checkbox__wrapper {
     display: flex;
     align-items: center;
@@ -15,4 +17,10 @@
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0.20000000298023224px;
+}
+
+@media screen and (width >= $breakpoint-sm ) {
+    .c_checkbox__label {
+        font-size: 12px;
+    }
 }

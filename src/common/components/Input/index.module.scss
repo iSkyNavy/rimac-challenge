@@ -16,6 +16,12 @@ $padding: 16px;
     z-index: 0;
     background-color: #F8F9FF;
     width: 100%;
+    &:has(.c_input__text:not([value=""]):invalid) {
+        border-color: red;
+        .c_input__label {
+            color: red;
+        }
+    }
 }
 
 .c_input__border_full {
@@ -24,12 +30,10 @@ $padding: 16px;
 
 .c_input__border_left {
     border-radius: 8px 0 0 8px;
-    border-right: 0;
 }
 
 .c_input__border_right {
     border-radius: 0 8px 8px 0;
-    border-left: 0;
 }
 
 .c_input__has_value {

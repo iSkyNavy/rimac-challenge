@@ -2,21 +2,35 @@ import FamilyMobileImg from "@assets/images/family-217.png";
 import FamilyImg from "@assets/images/family-220.png";
 
 import { useWindowSize } from "src/hooks/useWindowSize";
-import styles from "./index.module.scss";
 import { Input } from "@components/Input";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Select } from "@components/Select";
 import { CheckBox } from "@components/CheckBox";
+import { DNIPattern, passportPattern, phonePattern } from "@constants/patterns";
+import { noNumberRegex } from "@constants/regex";
+
+import styles from "./index.module.scss";
+import { useUserHook } from "@hooks/useUserHook";
+import { useNavigate } from "react-router-dom";
+import { publicRoutesPath } from "@routes/routes";
+import { useUserProviderHook } from "@hooks/useUserProviderHook";
+
+type TDocumentCode = "DNI" | "PSPT";
 
 export const MainHomeSection = () => {
 	const [isAcceptPrivacityPolicy, setIsAcceptPrivacityPolicy] = useState(false);
 	const [isAcceptCommercialCommunicationPolicy, setIsAcceptCommercialCommunicationPolicy] =
 		useState(false);
 	const [phoneValue, setPhoneValue] = useState("");
-	const [documentTypeValue, setDocumentTypeValue] = useState("DNI");
+	const [documentTypeValue, setDocumentTypeValue] = useState<TDocumentCode>("DNI");
+	const [documentPattern, setDocumentPattern] = useState(DNIPattern);
 	const [documentNumberValue, setDocumentNumberValue] = useState("");
-
+	const [isSubmitFormError, setIsSubmitFormError] = useState(false);
+	const [isSubmitFormLoading, setIsSubmitFormLoading] = useState(false);
+	const { setData } = useUserProviderHook();
 	const { width } = useWindowSize();
+	const { getUser } = useUserHook();
+	const navigate = useNavigate();
 
 	const isMobile = width < 768;
 
@@ -34,43 +48,41 @@ export const MainHomeSection = () => {
 	];
 
 	const handleOnChangeDocumentType = (e: ChangeEvent<HTMLSelectElement>) => {
-		console.log(e.target.value);
-		const value = e.target.value;
+		const value = e.target.value as TDocumentCode;
 		setDocumentTypeValue(value);
-		const element = document.getElementById("document_number")! as HTMLInputElement;
 		setDocumentNumberValue("");
-		element.value = "";
+		if (value === "DNI") setDocumentPattern(DNIPattern);
+		else setDocumentPattern(passportPattern);
 	};
 
 	const handleOnChangeDocumentNumber = (e: ChangeEvent<HTMLInputElement>) => {
 		let value = e.target.value;
-		value = value.replace(/\D/g, "");
-		const element = document.getElementById("document_number")! as HTMLInputElement;
-		element.value = value;
+		if (value.match(noNumberRegex)) {
+			value = value.replace(noNumberRegex, "");
+			return setDocumentNumberValue(value);
+		}
 		if (documentTypeValue === "DNI" && value.length > 8) {
 			value = value.slice(0, value.length - 1);
-			setDocumentNumberValue(value);
-			element.value = value;
+			return setDocumentNumberValue(value);
 		}
 		if (documentTypeValue === "PSPT" && value.length > 12) {
 			value = value.slice(0, value.length - 1);
-			setDocumentNumberValue(value);
-			element.value = value;
+			return setDocumentNumberValue(value);
 		}
 		setDocumentNumberValue(value);
 	};
 
 	const handleOnChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
-		console.log(e.target.value);
-		const element = document.getElementById("phone")! as HTMLInputElement;
 		let value = e.target.value;
-		value = value.replace(/\D/, "");
-		element.value = value;
+		if (value.match(noNumberRegex)) {
+			value = value.replace(noNumberRegex, "");
+			return setPhoneValue(value);
+		}
 		if (value.length > 9) {
 			value = value.slice(0, value.length - 1);
-			element.value = value;
-			setPhoneValue(value);
+			return setPhoneValue(value);
 		}
+		setPhoneValue(value);
 	};
 
 	const handleCheckedPrivacyPolicy = () => {
@@ -82,13 +94,32 @@ export const MainHomeSection = () => {
 	};
 
 	const isInValidForm = (): boolean => {
+		const isPhoneValueValid = phoneValue.match(phonePattern) ? true : false;
+		const isDocumentNumberValueValid = documentNumberValue.match(documentPattern)
+			? true
+			: false;
 		return (
 			!isAcceptPrivacityPolicy ||
 			!isAcceptCommercialCommunicationPolicy ||
-			phoneValue.length === 0 ||
-			documentNumberValue.length === 0 ||
-			documentTypeValue.length === 0
+			!isPhoneValueValid ||
+			!isDocumentNumberValueValid
 		);
+	};
+
+	const onSubmitForm = async (e: FormEvent<HTMLFormElement>) => {
+		try {
+			setIsSubmitFormLoading(true);
+			e.preventDefault();
+			if (isInValidForm()) return alert("Completa todos los campos");
+			console.log("data");
+			const user = await getUser();
+			setData(user);
+			navigate(publicRoutesPath.PlansPage);
+		} catch (error) {
+			setIsSubmitFormError(true);
+		} finally {
+			setIsSubmitFormLoading(false);
+		}
 	};
 
 	return (
@@ -121,7 +152,7 @@ export const MainHomeSection = () => {
 						100% online.
 					</p>
 					<div className={styles.s_main_home__form}>
-						<form action="">
+						<form onSubmit={onSubmitForm}>
 							<div className={styles.s_main_home__form_row}>
 								<Select
 									options={documents}
@@ -141,6 +172,7 @@ export const MainHomeSection = () => {
 									borderRadius="right"
 									name="document_number"
 									id="document_number"
+									pattern={documentPattern}
 									required
 								/>
 							</div>
@@ -153,39 +185,45 @@ export const MainHomeSection = () => {
 									borderRadius="full"
 									name="phone"
 									id="phone"
+									pattern={phonePattern}
 									required
 								/>
 							</div>
-							<br />
-							<div className={styles.s_main_home__form_row}>
-								<CheckBox
-									name="accept-privacy-policy"
-									label="Acepto la Política de Privacidad"
-									checked={isAcceptPrivacityPolicy}
-									onChange={handleCheckedPrivacyPolicy}
-									required
-								/>
+							<div className={styles.s_main_home__form_checkboxes}>
+								<div className={styles.s_main_home__form_row_checkbox}>
+									<CheckBox
+										name="accept-privacy-policy"
+										label="Acepto la Política de Privacidad"
+										checked={isAcceptPrivacityPolicy}
+										onChange={handleCheckedPrivacyPolicy}
+										required
+									/>
+								</div>
+								<div className={styles.s_main_home__form_row_checkbox}>
+									<CheckBox
+										name="accept-commercial-communications"
+										label="Acepto la Política Comunicaciones Comerciales"
+										checked={isAcceptCommercialCommunicationPolicy}
+										onChange={handleCheckedCommercialPolicy}
+										required
+									/>
+								</div>
+								<a className={styles.s_main_home__form_apply_terms}>
+									Aplican Términos y Condiciones.
+								</a>
 							</div>
-							<div className={styles.s_main_home__form_row}>
-								<CheckBox
-									name="accept-commercial-communications"
-									label="Acepto la Política Comunicaciones Comerciales"
-									checked={isAcceptCommercialCommunicationPolicy}
-									onChange={handleCheckedCommercialPolicy}
-									required
-								/>
-							</div>
-							<a className={styles.s_main_home__form_apply_terms}>
-								Aplican Términos y Condiciones.
-							</a>
 							<button
 								type="submit"
+								role="button"
 								className={styles.s_main_home__form_button_submit}
-								disabled={isInValidForm()}
+								disabled={isInValidForm() || isSubmitFormLoading}
 							>
-								Cotiza aquí
+								{isSubmitFormLoading ? "...Cargando" : "Cotiza aquí"}
 							</button>
 						</form>
+						{isSubmitFormError && (
+							<div className={styles.s_main_home__form_error}>Error</div>
+						)}
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,72 @@
+@import '../../../../utils/styles/theme';
+
+.s_main_plans{
+    margin-top: 32px;
+}
+
+.s_main_plans__title {
+    font-family: "Lato", sans-serif;
+    color: #141938;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: -0.20000000298023224px;
+    text-align: left;
+
+    margin-bottom: 8px;
+}
+
+.s_main_plans__description {
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.10000000149011612px;
+    text-align: left;
+}
+
+.s_main_plans__options {
+    margin: 32px 0 20px;
+}
+
+.s_main_plans__radio_card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.s_main_plans__result {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+@media screen and (width >= $breakpoint-sm) {
+
+    .s_main_plans__title {
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: -0.6000000238418579px;
+        text-align: center;
+    }
+
+    .s_main_plans__description {
+        text-align: center;
+    }
+
+    .s_main_plans__radio_card {
+        flex-direction: row;
+        justify-content: center;
+        gap: 32px;
+    }
+
+    .s_main_plans__radio_card_item {
+        width: 256px;
+    }
+
+    .s_main_plans__result {
+        flex-direction: row;
+    }
+}

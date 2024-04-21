@@ -1,0 +1,25 @@
+.c_progress_steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    font-size: 10px;
+    font-weight: 900;
+    line-height: 16px;
+    letter-spacing: 0.800000011920929px;
+    font-family: "Lato", sans-serif;
+}
+
+.c_progress_steps__line {
+    width: 64%;
+    height: 6px;
+    background-color: #D7DBF5;
+    border-radius: 20px;
+}
+
+.c_progress_steps__current {
+    width: 50%;
+    height: 100%;
+    background-color: #4F4FFF;
+}

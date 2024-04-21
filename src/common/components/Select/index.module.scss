@@ -23,10 +23,12 @@
 
 .c_select__border_left {
     border-radius: 8px 0 0 8px;
+    border-right: 0;
 }
 
 .c_select__border_right {
     border-radius: 0 8px 8px 0;
+    border-left: 0;
 }
 
 .c_select__icon_wrapper {

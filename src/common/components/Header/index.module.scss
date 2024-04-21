@@ -28,7 +28,7 @@
 
 .c_header__details_phone_text {
     @include textBold;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     line-height: 20px;
     letter-spacing: 0.4000000059604645px;
@@ -37,5 +37,8 @@
 @media screen and (width >= $breakpoint-sm) {
     .c_header__details_icon {
         margin-left: 16px;
+    }
+    .c_header__details_phone_text {
+        font-size: 18px;
     }
 }
