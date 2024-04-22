@@ -1,13 +1,12 @@
+import { useWindowSize } from "src/hooks/useWindowSize";
 import PhoneIcon from "@assets/icons/phone.svg";
 import LogoRedIcon from "@assets/icons/logo-red.svg";
-
-import { useWindowSize } from "src/hooks/useWindowSize";
-
+import { BREAKPOINTS } from "@constants/breakpoints";
 import styles from "./index.module.scss";
 
 export const Header = () => {
 	const { width } = useWindowSize();
-	const isMobile = width < 768;
+	const isMobile = width < BREAKPOINTS.SM;
 	return (
 		<header className={styles.c_header}>
 			<div className={`i-container ${styles.c_header__wrapper}`}>

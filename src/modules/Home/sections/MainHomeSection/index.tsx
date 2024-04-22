@@ -1,19 +1,19 @@
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useWindowSize } from "src/hooks/useWindowSize";
+import { publicRoutesPath } from "@routes/routes";
 import FamilyMobileImg from "@assets/images/family-217.png";
 import FamilyImg from "@assets/images/family-220.png";
-
-import { useWindowSize } from "src/hooks/useWindowSize";
 import { Input } from "@components/Input";
-import { ChangeEvent, FormEvent, useState } from "react";
 import { Select } from "@components/Select";
 import { CheckBox } from "@components/CheckBox";
 import { DNIPattern, passportPattern, phonePattern } from "@constants/patterns";
 import { noNumberRegex } from "@constants/regex";
-
-import styles from "./index.module.scss";
+import { BREAKPOINTS } from "@constants/breakpoints";
+import { DOCUMENTS } from "@constants/app";
 import { useUserHook } from "@hooks/useUserHook";
-import { useNavigate } from "react-router-dom";
-import { publicRoutesPath } from "@routes/routes";
 import { useUserProviderHook } from "@hooks/useUserProviderHook";
+import styles from "./index.module.scss";
 
 type TDocumentCode = "DNI" | "PSPT";
 
@@ -32,20 +32,7 @@ export const MainHomeSection = () => {
 	const { getUser } = useUserHook();
 	const navigate = useNavigate();
 
-	const isMobile = width < 768;
-
-	const documents = [
-		{
-			value: "DNI",
-			label: "DNI",
-			enabled: true,
-		},
-		{
-			value: "PSPT",
-			label: "Pasaporte",
-			enabled: true,
-		},
-	];
+	const isMobile = width < BREAKPOINTS.SM;
 
 	const handleOnChangeDocumentType = (e: ChangeEvent<HTMLSelectElement>) => {
 		const value = e.target.value as TDocumentCode;
@@ -117,7 +104,7 @@ export const MainHomeSection = () => {
 				...user,
 				phone: Number(phoneValue),
 				documentType:
-					documents.find(document => document.value === documentTypeValue)?.label ?? "",
+					DOCUMENTS.find(document => document.value === documentTypeValue)?.label ?? "",
 				documentNumber: documentNumberValue,
 			};
 			setData(data);
@@ -162,7 +149,7 @@ export const MainHomeSection = () => {
 						<form onSubmit={onSubmitForm}>
 							<div className={styles.s_main_home__form_row}>
 								<Select
-									options={documents}
+									options={DOCUMENTS}
 									value={documentTypeValue}
 									onChange={handleOnChangeDocumentType}
 									borderRadius="left"

@@ -1,5 +1,7 @@
+@import "../../../utils/styles/colors";
+
 .c_separator {
     width: 100%;
-    border: 1px solid #D7DBF5;
+    border: 1px solid $color-gray-light-400;
     margin: 16px 0;
 }

@@ -1,25 +1,14 @@
-import { BackButton } from "@components/BackButton";
-
-import styles from "./index.module.scss";
-import { useWindowSize } from "@hooks/useWindowSize";
-import { CardResume } from "src/modules/Resume/components/CardResume";
-import { useNavigate } from "react-router-dom";
-import { StepsBar } from "@components/StepsBar";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { CardResume } from "src/modules/Resume/components/CardResume";
 import { publicRoutesPath } from "@routes/routes";
+import { BackButton } from "@components/BackButton";
+import { useWindowSize } from "@hooks/useWindowSize";
 import { useUserProviderHook } from "@hooks/useUserProviderHook";
-// import {  } from "react-router";
-
-const steps = [
-	{
-		index: 1,
-		label: "Planes y coberturas",
-	},
-	{
-		index: 2,
-		label: "Resumen",
-	},
-];
+import { StepsBar } from "@components/StepsBar";
+import { QUOTE_OPTIONS } from "@constants/app";
+import { BREAKPOINTS } from "@constants/breakpoints";
+import styles from "./index.module.scss";
 
 const ResumePage = () => {
 	const [isPageLoading, setIsPageLoading] = useState(true);
@@ -28,7 +17,7 @@ const ResumePage = () => {
 	const { user } = useUserProviderHook();
 	const { hasSession } = user;
 
-	const isMobile = width <= 768;
+	const isMobile = width <= BREAKPOINTS.SM;
 
 	const handleBackButton = () => {
 		navigate(-1);
@@ -45,7 +34,7 @@ const ResumePage = () => {
 	return (
 		<>
 			<div className={styles.p_resume__steps}>
-				<StepsBar currentIndex={2} steps={steps} />
+				<StepsBar currentIndex={2} steps={QUOTE_OPTIONS} />
 			</div>
 			<div className={styles.p_resume}>
 				<div className="i-container">

@@ -1,3 +1,5 @@
+@import "../../../utils/styles/theme";
+
 .c_progress_steps {
     display: flex;
     align-items: center;
@@ -14,12 +16,12 @@
 .c_progress_steps__line {
     width: 64%;
     height: 6px;
-    background-color: #D7DBF5;
+    background-color: $color-gray-light-400;
     border-radius: 20px;
 }
 
 .c_progress_steps__current {
     width: 50%;
     height: 100%;
-    background-color: #4F4FFF;
+    background-color: $color-secondary;
 }

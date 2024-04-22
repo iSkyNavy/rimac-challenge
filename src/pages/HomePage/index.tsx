@@ -1,6 +1,5 @@
 import { Footer } from "@components/Footer";
 import { MainHomeSection } from "src/modules/Home/sections/MainHomeSection";
-
 import BlurPinkMobileImg from "@assets/images/blur-pink-mobile.png";
 import BlurPinkImg from "@assets/images/blur-pink.png";
 import BlurTurquoiseMobileImg from "@assets/images/blur-turquoise-mobile.png";

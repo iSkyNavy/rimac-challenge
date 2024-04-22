@@ -1,11 +1,12 @@
+import { useWindowSize } from "src/hooks/useWindowSize";
 import LogoWhiteIcon from "@assets/icons/logo-white.svg";
 import LogoWhiteStackedIcon from "@assets/icons/logo-white-stacked.svg";
-import { useWindowSize } from "src/hooks/useWindowSize";
+import { BREAKPOINTS } from "@constants/breakpoints";
 import styles from "./index.module.scss";
 
 export const Footer = () => {
 	const { width } = useWindowSize();
-	const isMobile = width < 768;
+	const isMobile = width < BREAKPOINTS.SM;
 	return (
 		<footer className={styles.c_footer}>
 			<div className={`i-container ${styles.c_footer__wrapper}`}>

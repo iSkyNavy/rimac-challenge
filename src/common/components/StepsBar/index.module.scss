@@ -1,3 +1,5 @@
+@import "../../../utils/styles/theme";
+
 .c_steps_bar__wrapper {
     display: flex;
     align-items: center;
@@ -26,8 +28,8 @@
 }
 
 .c_steps_bar__index_active {
-    background-color: #4F4FFF;
-    border: 1px solid #4F4FFF;
+    background-color: $color-secondary;
+    border: 1px solid $color-secondary;
 }
 
 .c_steps_bar__index_disabled {
@@ -45,7 +47,7 @@
 
 .c_steps_bar__label_active {
     font-weight: 700;
-    color: #141938;
+    color: $color-primary;
 }
 
 .c_steps_bar__label_disabled {

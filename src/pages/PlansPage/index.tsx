@@ -1,13 +1,14 @@
-import { BackButton } from "@components/BackButton";
-import { useWindowSize } from "@hooks/useWindowSize";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { StepsSection } from "src/modules/Shared/sections/StepsSection";
 import { MainPlansSection } from "src/modules/Plans/sections/MainPlansSection";
-import { useEffect, useState } from "react";
+import { BackButton } from "@components/BackButton";
+import { useWindowSize } from "@hooks/useWindowSize";
 import { PlanProps } from "@models/PlansModel";
 import { PlanService } from "@services/PlansService";
-import { useNavigate } from "react-router-dom";
 import { useUserProviderHook } from "@hooks/useUserProviderHook";
 import { publicRoutesPath } from "@routes/routes";
+import { BREAKPOINTS } from "@constants/breakpoints";
 import styles from "./index.module.scss";
 
 const PlansPage = () => {
@@ -18,7 +19,7 @@ const PlansPage = () => {
 	const { width } = useWindowSize();
 	const navigate = useNavigate();
 
-	const isMobile = width < 768;
+	const isMobile = width < BREAKPOINTS.SM;
 
 	const getPlans = async () => {
 		const { list } = (await PlanService.getPlans()) || [];

@@ -1,9 +1,11 @@
+@import "../../../utils/styles/theme";
+
 .c_select__wrapper {
     position: relative;
 }
 .c_select {
     padding: 8px 16px 8px;
-    background-color: #F8F9FF;
+    background-color: $color-tertiary;
     height: 100%;
     -webkit-appearance: none;
 

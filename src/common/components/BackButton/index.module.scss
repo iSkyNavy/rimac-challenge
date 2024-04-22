@@ -1,3 +1,5 @@
+@import "../../../utils/styles/theme";
+
 .c_back_button {
     display: flex;
     align-items: center;
@@ -9,16 +11,16 @@
 
 .c_back_button__theme_blue {
     .c_back_button__button {
-        border: 2px solid #4F4FFF;
+        border: 2px solid $color-secondary;
         svg {
-            stroke: #4F4FFF;
+            stroke: $color-secondary;
         }
         path {
-            fill: #4F4FFF;
+            fill: $color-secondary;
         }
     }
     .c_back_button__label {
-        color: #4F4FFF
+        color: $color-secondary
     }
 }
 

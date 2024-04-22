@@ -1,6 +1,5 @@
 @import "../../utils/styles/theme";
 
-
 .p_resume {
     margin-bottom: 112px;
 }
@@ -24,7 +23,7 @@
 
 @media screen and (width >= $breakpoint-sm) {
     .p_resume__steps {
-        background-color: #EDEFFC;
+        background-color: $color-gray-light;
         padding: 16px;
     }
     .p_resume__title {
