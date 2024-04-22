@@ -52,6 +52,7 @@ export const Select: FC<Props> = ({
 			<div className={styles.c_select__icon_wrapper}>
 				<ArrowBasic />
 			</div>
+			<label htmlFor={props.name}></label>
 		</div>
 	);
 };

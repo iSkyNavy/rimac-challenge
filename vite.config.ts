@@ -9,7 +9,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), svgr({ include: "**/**.svg", svgrOptions: { svgo: true } })],
   resolve: {
-    //current only work for scss files
     alias: {
       "~styles": resolve(__dirname, "src/utils/styles/"),
     }

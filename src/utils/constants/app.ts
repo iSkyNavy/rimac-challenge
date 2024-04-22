@@ -1,5 +1,5 @@
 export const URL_BASE = import.meta.env.VITE_URL_BASE;
-export const URL_API = import.meta.env.VITE_URL_API;
+export const URL_API = import.meta.env.VITE_URL_API || "https://rimac-front-end-challenge.netlify.app/api";
 
 export const QUOTE_OPTIONS = [
     {

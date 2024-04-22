@@ -4,6 +4,10 @@
     padding: clamp(12px, 6vw, 14px) 0;
 }
 
+.c_header__icon_wrapper {
+    cursor: pointer;
+}
+
 .c_header__wrapper, .c_header__details {
     display: flex;
     justify-content: space-between;

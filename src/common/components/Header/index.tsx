@@ -13,7 +13,10 @@ export const Header = () => {
 	return (
 		<header className={styles.c_header}>
 			<div className={`i-container ${styles.c_header__wrapper}`}>
-				<div onClick={() => navigate(publicRoutesPath.HomePage)}>
+				<div
+					className={styles.c_header__icon_wrapper}
+					onClick={() => navigate(publicRoutesPath.HomePage)}
+				>
 					<LogoRedIcon />
 				</div>
 				<div className={styles.c_header__details}>

@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes } from "react";
+import { FC, InputHTMLAttributes, useRef } from "react";
 import styles from "./index.module.scss";
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement>;
@@ -9,6 +9,7 @@ interface Props extends InputProps {
 }
 
 export const Input: FC<Props> = ({ label, value, borderRadius = "full", ...props }) => {
+	const inputRef = useRef<HTMLInputElement>(null);
 	const hasValue = value;
 	let borderRadiusStyles = "";
 	switch (borderRadius) {
@@ -24,13 +25,17 @@ export const Input: FC<Props> = ({ label, value, borderRadius = "full", ...props
 		default:
 			break;
 	}
+	const handleInputFocus = () => {
+		inputRef.current?.focus();
+	};
 	return (
 		<div
 			className={`${styles.c_input} ${
 				hasValue && styles.c_input__has_value
 			} ${borderRadiusStyles}`}
+			onClick={handleInputFocus}
 		>
-			<input className={styles.c_input__text} value={value} {...props} />
+			<input ref={inputRef} className={styles.c_input__text} value={value} {...props} />
 			{label && (
 				<label htmlFor={props.name} className={`${styles.c_input__label}`}>
 					{label}
