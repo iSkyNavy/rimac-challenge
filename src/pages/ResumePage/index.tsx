@@ -33,9 +33,11 @@ const ResumePage = () => {
 
 	return (
 		<>
-			<div className={styles.p_resume__steps}>
-				<StepsBar currentIndex={2} steps={QUOTE_OPTIONS} />
-			</div>
+			{!isMobile && (
+				<div className={styles.p_resume__steps}>
+					<StepsBar currentIndex={2} steps={QUOTE_OPTIONS} />
+				</div>
+			)}
 			<div className={styles.p_resume}>
 				<div className="i-container">
 					{!isMobile && (

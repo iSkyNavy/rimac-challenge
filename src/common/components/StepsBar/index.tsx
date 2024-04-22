@@ -13,9 +13,9 @@ interface Props {
 export const StepsBar: FC<Props> = ({ steps, currentIndex }) => {
 	return (
 		<div className={styles.c_steps_bar__wrapper}>
-			{steps.map(step => (
+			{steps.map((step, index) => (
 				<>
-					<div className={styles.c_steps_bar}>
+					<div className={styles.c_steps_bar} key={index}>
 						<button
 							className={`${styles.c_steps_bar__index} ${
 								currentIndex === step.index
@@ -35,7 +35,7 @@ export const StepsBar: FC<Props> = ({ steps, currentIndex }) => {
 							{step.label}
 						</span>
 					</div>
-					{step.index != steps.length && <LineIcon />}
+					{step.index != steps.length && <LineIcon key={`${index}-key`} />}
 				</>
 			))}
 		</div>

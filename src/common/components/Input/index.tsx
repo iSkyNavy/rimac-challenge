@@ -31,7 +31,11 @@ export const Input: FC<Props> = ({ label, value, borderRadius = "full", ...props
 			} ${borderRadiusStyles}`}
 		>
 			<input className={styles.c_input__text} value={value} {...props} />
-			{label && <label className={`${styles.c_input__label}`}>{label}</label>}
+			{label && (
+				<label htmlFor={props.name} className={`${styles.c_input__label}`}>
+					{label}
+				</label>
+			)}
 		</div>
 	);
 };

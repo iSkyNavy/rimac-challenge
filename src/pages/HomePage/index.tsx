@@ -16,6 +16,7 @@ const HomePage = () => {
 						className={styles.p_home__blur_pink_img}
 						src={BlurPinkMobileImg}
 						alt="blur-pink-img"
+						fetchPriority="high"
 					/>
 				</picture>
 			</div>
@@ -26,6 +27,7 @@ const HomePage = () => {
 						className={styles.p_home__blur_turquoise_img}
 						src={BlurTurquoiseMobileImg}
 						alt="blur-turquoise-img"
+						fetchPriority="high"
 					/>
 				</picture>
 			</div>

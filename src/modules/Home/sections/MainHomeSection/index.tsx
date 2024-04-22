@@ -98,7 +98,6 @@ export const MainHomeSection = () => {
 			setIsSubmitFormLoading(true);
 			e.preventDefault();
 			if (isInValidForm()) return alert("Completa todos los campos");
-			console.log("data");
 			const user = await getUser();
 			const data = {
 				...user,
@@ -121,7 +120,7 @@ export const MainHomeSection = () => {
 			{!isMobile && (
 				<div className={styles.s_main_home__family_img_wrapper}>
 					<picture className={styles.s_main_home__family_img}>
-						<img src={FamilyImg} alt="family-img" />
+						<img src={FamilyImg} alt="family-img" width={"auto"} height={"auto"} />
 					</picture>
 				</div>
 			)}
@@ -137,7 +136,12 @@ export const MainHomeSection = () => {
 							</h4>
 						</div>
 						<picture className={styles.s_main_home__presentation_img}>
-							<img src={FamilyMobileImg} alt="family-img-mobile" />
+							<img
+								src={FamilyMobileImg}
+								alt="family-img-mobile"
+								height={160}
+								width={136}
+							/>
 						</picture>
 					</div>
 					<hr className={styles.s_main_home__separator} />
@@ -190,19 +194,21 @@ export const MainHomeSection = () => {
 										label="Acepto la Política de Privacidad"
 										checked={isAcceptPrivacityPolicy}
 										onChange={handleCheckedPrivacyPolicy}
+										id="accept-privacy-policy"
 										required
 									/>
 								</div>
 								<div className={styles.s_main_home__form_row_checkbox}>
 									<CheckBox
 										name="accept-commercial-communications"
+										id="accept-commercial-communications"
 										label="Acepto la Política Comunicaciones Comerciales"
 										checked={isAcceptCommercialCommunicationPolicy}
 										onChange={handleCheckedCommercialPolicy}
 										required
 									/>
 								</div>
-								<a className={styles.s_main_home__form_apply_terms}>
+								<a href="" className={styles.s_main_home__form_apply_terms}>
 									Aplican Términos y Condiciones.
 								</a>
 							</div>

@@ -9,7 +9,7 @@ export const CardResume = () => {
 	const { name, lastName, phone, plan, documentType, documentNumber } = user;
 	return (
 		<Card className={styles.c_card_resume}>
-			<span className={styles.c_card_resume__prices_title}>Precios calculados para:</span>
+			<span className={styles.c_card_resume__prices_title}>PRECIOS CALCULADOS PARA:</span>
 			<div className={styles.c_card_resume__header}>
 				<FamilyIcon />
 				<h5>

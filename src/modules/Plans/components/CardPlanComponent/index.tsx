@@ -10,9 +10,8 @@ interface Props {
 	price: number;
 	onClick: () => void | Promise<void>;
 }
-export const CardPlanComponent: FC<Props> = ({ id, title, Icon, price, description, onClick }) => {
-	const handleSelectPlan = async (id: number) => {
-		console.log(id);
+export const CardPlanComponent: FC<Props> = ({ title, Icon, price, description, onClick }) => {
+	const handleSelectPlan = async () => {
 		if (onClick instanceof Promise) await onClick();
 		else onClick();
 	};
@@ -33,7 +32,7 @@ export const CardPlanComponent: FC<Props> = ({ id, title, Icon, price, descripti
 						))}
 					</ul>
 				</div>
-				<button className={styles.c_card_plan__button} onClick={() => handleSelectPlan(id)}>
+				<button className={styles.c_card_plan__button} onClick={() => handleSelectPlan()}>
 					Seleccionar Plan
 				</button>
 			</div>

@@ -23,7 +23,6 @@ const PlansPage = () => {
 
 	const getPlans = async () => {
 		const { list } = (await PlanService.getPlans()) || [];
-		console.log(list);
 		setPlans(list);
 		setIsPageLoading(false);
 	};
