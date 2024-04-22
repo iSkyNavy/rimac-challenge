@@ -1,16 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { useWindowSize } from "src/hooks/useWindowSize";
+import { publicRoutesPath } from "@routes/routes";
 import PhoneIcon from "@assets/icons/phone.svg";
 import LogoRedIcon from "@assets/icons/logo-red.svg";
 import { BREAKPOINTS } from "@constants/breakpoints";
 import styles from "./index.module.scss";
 
 export const Header = () => {
+	const navigate = useNavigate();
 	const { width } = useWindowSize();
 	const isMobile = width < BREAKPOINTS.SM;
 	return (
 		<header className={styles.c_header}>
 			<div className={`i-container ${styles.c_header__wrapper}`}>
-				<div>
+				<div onClick={() => navigate(publicRoutesPath.HomePage)}>
 					<LogoRedIcon />
 				</div>
 				<div className={styles.c_header__details}>
