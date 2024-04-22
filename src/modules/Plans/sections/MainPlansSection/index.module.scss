@@ -67,6 +67,9 @@
     }
 
     .s_main_plans__result {
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 32px;
+        row-gap: 32px;
     }
 }

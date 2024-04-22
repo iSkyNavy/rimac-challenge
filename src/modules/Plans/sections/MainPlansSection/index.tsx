@@ -43,8 +43,8 @@ export const MainPlansSection: FC<Pops> = ({ plans }) => {
 	const [plansFiltered, setPlansFiltered] = useState<PlanProps[]>([]);
 	const [optionSelectionId, setoptionSelectionId] = useState(OptionsId.NONE);
 
-	const { user } = useUserProviderHook();
-	const { age: ageUser } = user;
+	const { user, setData } = useUserProviderHook();
+	const { age: ageUser, name } = user;
 
 	const navigate = useNavigate();
 
@@ -71,7 +71,7 @@ export const MainPlansSection: FC<Pops> = ({ plans }) => {
 	};
 
 	const handleSelectPlan = (plan: PlanProps) => {
-		console.log(plan);
+		setData({ ...user, plan: plan });
 		navigate(publicRoutesPath.ResumePage);
 	};
 
@@ -80,7 +80,7 @@ export const MainPlansSection: FC<Pops> = ({ plans }) => {
 	}, [plans]);
 	return (
 		<div className={styles.s_main_plans}>
-			<h3 className={styles.s_main_plans__title}>Rocío ¿Para quién deseas cotizar?</h3>
+			<h3 className={styles.s_main_plans__title}>{name} ¿Para quién deseas cotizar?</h3>
 			<p className={styles.s_main_plans__description}>
 				Selecciona la opción que se ajuste más a tus necesidades.
 			</p>

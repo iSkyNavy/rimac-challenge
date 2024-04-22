@@ -5,10 +5,10 @@ import styles from "./index.module.scss";
 interface Props {
 	label?: string;
 	theme: "gray" | "blue";
-	onClick?: () => void;
+	onClick: () => void;
 }
 
-export const BackButton: FC<Props> = ({ label, theme }) => {
+export const BackButton: FC<Props> = ({ label, theme, onClick }) => {
 	let themeStyle = "";
 	switch (theme) {
 		case "blue":
@@ -20,7 +20,7 @@ export const BackButton: FC<Props> = ({ label, theme }) => {
 	}
 	return (
 		<div role="button" className={`${styles.c_back_button} ${themeStyle}`}>
-			<button className={`${styles.c_back_button__button}`}>
+			<button className={`${styles.c_back_button__button}`} onClick={onClick}>
 				<ArrowBasicIcon />
 			</button>
 			{label && <span className={styles.c_back_button__label}>{label}</span>}

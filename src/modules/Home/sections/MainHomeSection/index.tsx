@@ -113,7 +113,14 @@ export const MainHomeSection = () => {
 			if (isInValidForm()) return alert("Completa todos los campos");
 			console.log("data");
 			const user = await getUser();
-			setData(user);
+			const data = {
+				...user,
+				phone: Number(phoneValue),
+				documentType:
+					documents.find(document => document.value === documentTypeValue)?.label ?? "",
+				documentNumber: documentNumberValue,
+			};
+			setData(data);
 			navigate(publicRoutesPath.PlansPage);
 		} catch (error) {
 			setIsSubmitFormError(true);

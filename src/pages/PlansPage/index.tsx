@@ -1,27 +1,48 @@
 import { BackButton } from "@components/BackButton";
 import { useWindowSize } from "@hooks/useWindowSize";
 import { StepsSection } from "src/modules/Shared/sections/StepsSection";
-import styles from "./index.module.scss";
 import { MainPlansSection } from "src/modules/Plans/sections/MainPlansSection";
 import { useEffect, useState } from "react";
 import { PlanProps } from "@models/PlansModel";
 import { PlanService } from "@services/PlansService";
+import { useNavigate } from "react-router-dom";
+import { useUserProviderHook } from "@hooks/useUserProviderHook";
+import { publicRoutesPath } from "@routes/routes";
+import styles from "./index.module.scss";
 
 const PlansPage = () => {
+	const [isPageLoading, setIsPageLoading] = useState(true);
 	const [plans, setPlans] = useState<PlanProps[]>([]);
+	const { user } = useUserProviderHook();
+	const { hasSession = false } = user;
 	const { width } = useWindowSize();
+	const navigate = useNavigate();
+
+	const isMobile = width < 768;
 
 	const getPlans = async () => {
 		const { list } = (await PlanService.getPlans()) || [];
 		console.log(list);
 		setPlans(list);
+		setIsPageLoading(false);
+	};
+
+	const handleBackButton = () => {
+		navigate(-1);
 	};
 
 	useEffect(() => {
-		getPlans();
+		if (hasSession) {
+			getPlans();
+		} else {
+			navigate(publicRoutesPath.HomePage);
+		}
 	}, []);
 
-	const isMobile = width < 768;
+	if (isPageLoading) {
+		return <p>...Cargando</p>;
+	}
+
 	return (
 		<div>
 			<StepsSection />
@@ -29,7 +50,7 @@ const PlansPage = () => {
 				<div className={styles.p_plans__container}>
 					{!isMobile && (
 						<div className={styles.p_plans__back_button_wrapper}>
-							<BackButton theme="blue" label="Volver" />
+							<BackButton theme="blue" label="Volver" onClick={handleBackButton} />
 						</div>
 					)}
 					<MainPlansSection plans={plans} />
