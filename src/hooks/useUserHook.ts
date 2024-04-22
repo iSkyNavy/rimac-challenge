@@ -6,7 +6,6 @@ export const useUserHook = () => {
     const [user, setUser] = useState<UserProps>();
     const getUser = async () => {
         const user = await UserService.getUser();
-        console.log(user);
         setUser(user);
         return user;
     }

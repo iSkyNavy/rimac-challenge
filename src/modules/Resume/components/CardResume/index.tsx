@@ -1,9 +1,8 @@
 import { Card } from "@components/Card";
-import FamilyIcon from "@assets/icons/family.svg";
-
-import styles from "./index.module.scss";
 import { Separator } from "@components/Separator";
+import FamilyIcon from "@assets/icons/family.svg";
 import { useUserProviderHook } from "@hooks/useUserProviderHook";
+import styles from "./index.module.scss";
 
 export const CardResume = () => {
 	const { user } = useUserProviderHook();

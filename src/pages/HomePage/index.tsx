@@ -1,5 +1,5 @@
-import { Footer } from "@components/Footer";
 import { MainHomeSection } from "src/modules/Home/sections/MainHomeSection";
+import { Footer } from "@components/Footer";
 import BlurPinkMobileImg from "@assets/images/blur-pink-mobile.webp";
 import BlurPinkImg from "@assets/images/blur-pink.webp";
 import BlurTurquoiseMobileImg from "@assets/images/blur-turquoise-mobile.webp";

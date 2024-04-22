@@ -1,16 +1,15 @@
 import { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { publicRoutesPath } from "@routes/routes";
 import { Option, RadioCard } from "@components/RadioCard";
 import UserProtectionIcon from "@assets/icons/user-protection.svg";
 import UserProtectionPlusIcon from "@assets/icons/user-protection-plus.svg";
 import HospitalLightIcon from "@assets/icons/hospital-light.svg";
 import HomeLightIcon from "@assets/icons/home-light.svg";
 import { PlanProps } from "@models/PlansModel";
-import { CardPlanComponent } from "../../components/CardPlanComponent";
 import { useUserProviderHook } from "@hooks/useUserProviderHook";
-
+import { CardPlanComponent } from "../../components/CardPlanComponent";
 import styles from "./index.module.scss";
-import { useNavigate } from "react-router-dom";
-import { publicRoutesPath } from "@routes/routes";
 
 interface Pops {
 	plans: PlanProps[];

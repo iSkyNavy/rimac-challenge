@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { StepsSection } from "src/modules/Shared/sections/StepsSection";
 import { MainPlansSection } from "src/modules/Plans/sections/MainPlansSection";
+import { publicRoutesPath } from "@routes/routes";
 import { BackButton } from "@components/BackButton";
 import { useWindowSize } from "@hooks/useWindowSize";
 import { PlanProps } from "@models/PlansModel";
 import { PlanService } from "@services/PlansService";
 import { useUserProviderHook } from "@hooks/useUserProviderHook";
-import { publicRoutesPath } from "@routes/routes";
 import { BREAKPOINTS } from "@constants/breakpoints";
 import styles from "./index.module.scss";
 
