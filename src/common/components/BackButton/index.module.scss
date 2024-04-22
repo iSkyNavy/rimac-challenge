@@ -1,10 +1,11 @@
-@import "../../../utils/styles/theme";
+@import "~styles/theme";
 
 .c_back_button {
     display: flex;
     align-items: center;
     column-gap: 8px;
 }
+
 .c_back_button__button {
     cursor: pointer;
 }
@@ -26,16 +27,16 @@
 
 .c_back_button__theme_gray {
     .c_back_button__button {
-        border: 2px solid #A9AFD9;
+        border: 2px solid $color-gray-light-500;
         svg {
-            stroke: #A9AFD9;
+            stroke: $color-gray-light-500;
         }
         path {
-            fill: #A9AFD9;
+            fill: $color-gray-light-500;
         }
     }
     .c_back_button__label {
-        color: #A9AFD9
+        color: $color-gray-light-500
     }
 }
 

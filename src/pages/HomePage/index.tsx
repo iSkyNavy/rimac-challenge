@@ -1,10 +1,9 @@
 import { Footer } from "@components/Footer";
 import { MainHomeSection } from "src/modules/Home/sections/MainHomeSection";
-import BlurPinkMobileImg from "@assets/images/blur-pink-mobile.png";
-import BlurPinkImg from "@assets/images/blur-pink.png";
-import BlurTurquoiseMobileImg from "@assets/images/blur-turquoise-mobile.png";
-import BlurTurquoiseImg from "@assets/images/blur-turquoise.png";
-
+import BlurPinkMobileImg from "@assets/images/blur-pink-mobile.webp";
+import BlurPinkImg from "@assets/images/blur-pink.webp";
+import BlurTurquoiseMobileImg from "@assets/images/blur-turquoise-mobile.webp";
+import BlurTurquoiseImg from "@assets/images/blur-turquoise.webp";
 import styles from "./index.module.scss";
 
 const HomePage = () => {
