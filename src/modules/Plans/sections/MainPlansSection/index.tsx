@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { publicRoutesPath } from "@routes/routes";
+import { DISCOUNT_TO_PLANS } from "@constants/app";
 import { Option, RadioCard } from "@components/RadioCard";
 import UserProtectionIcon from "@assets/icons/user-protection.svg";
 import UserProtectionPlusIcon from "@assets/icons/user-protection-plus.svg";
@@ -20,8 +21,6 @@ const OptionsId = {
 	FOR_OTHER: "para_otro",
 	NONE: "",
 };
-
-const discount = 0.05;
 
 export const MainPlansSection: FC<Pops> = ({ plans }) => {
 	const planOptions = [
@@ -53,7 +52,11 @@ export const MainPlansSection: FC<Pops> = ({ plans }) => {
 		for (const plan of plansState) {
 			if (ageUser! <= plan.age) {
 				if (OptionsId.FOR_OTHER != optionId) filteredPlans.push(plan);
-				else filteredPlans.push({ ...plan, price: plan.price - plan.price * discount });
+				else
+					filteredPlans.push({
+						...plan,
+						price: plan.price - plan.price * DISCOUNT_TO_PLANS,
+					});
 			}
 		}
 		setPlansFiltered(filteredPlans);

@@ -20,17 +20,16 @@
     margin-bottom: 40px;
 }
 
-
 @media screen and (width >= $breakpoint-sm) {
     .p_resume__steps {
         background-color: $color-gray-light;
         padding: 16px;
     }
+
     .p_resume__title {
         font-size: 40px;
         line-height: 48px;
         text-align: left;
-
         margin-bottom: 48px;
     }
 }
